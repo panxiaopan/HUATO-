@@ -1,0 +1,40 @@
+html,body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.headertop{
+   height: 40px;
+   background: #3333;
+   line-height: 40px;
+   padding-left: 20px;
+   font-size: 14px;
+ }
+ //翻页
+ .pages{
+     margin-top: 40px;
+     text-align: center;
+ }
+ //表格头部
+ .subregion{
+     height: 40px;   
+    font-size: 14px;
+    line-height: 40px;
+    padding-left: 20px;
+    margin-top: 40px;
+    background: #3333;
+ }
+ .conclude{
+    width: 400px;
+    height: 400px;
+    display: inline-block;
+} 
+.ivu-table-cell{
+ text-align: center
+} 
+.ivu-table th{
+  text-align: center
+}
+.ivu-row{
+    height: 100%;
+}
