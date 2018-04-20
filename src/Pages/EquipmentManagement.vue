@@ -9,7 +9,7 @@
                         <Input  placeholder="仪器序列号" v-model="loggerSn"></Input>
                     </FormItem>
                      <FormItem label="数据时间">
-                        <DatePicker type="daterange" v-model="DataTime"   placeholder="Select date" style="width: 200px" :options="disabledDate"></DatePicker>
+                        <DatePicker type="daterange" v-model="DataTime"  @on-change="Slectdata"  placeholder="Select date" style="width: 200px" :options="disabledDate"></DatePicker>
                      </FormItem>
                     <FormItem>
                         <Button type="primary" @click="locating">查询</Button>
@@ -66,6 +66,7 @@ import qs from 'qs';
 export default {
       data(){
           return{
+              
               loadingmain:false,
               loading:false,
               HisGroupName:'',
@@ -295,6 +296,10 @@ export default {
           }
       },
       methods:{
+         Slectdata(time){
+              this.DataTime[0]=time[0];
+              this.DataTime[1]=time[1]
+         },
          GetEquipment () {//列表请求
          this.loadingmain=true
              this.dataManage=[]
@@ -356,13 +361,14 @@ export default {
             GetUserDataUser(qs.stringify(parms)).then(res =>{
                        if(res.State==1){
                             this.Datauser.push(res.Data)
-                            this.modalqu=false
+                            this.Userzone='';
                             this.GetGroupDataUserCode()//提交后更新
                        }        
             })
          },
          SeachUser(){//查询用户
             this.GetUserDataUser()
+             this.GetGroupDataUserCode()//you
          },
          SubmitClon(){//提交
                 var  inductiveArrangement={

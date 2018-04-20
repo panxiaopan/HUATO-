@@ -370,7 +370,7 @@ export default {
                     endDate:this.endDate,
                     pageIndex:this.pageIndex,
                     pageSize:12,
-                    
+
               }
             GetUserManageDate(qs.stringify(parms)).then(res=>{
                  if(res.State==1){
@@ -378,6 +378,8 @@ export default {
                     this.totalnameber=res.TotalNumber
                     this.loading=false;
                     console.log(this.datauserlist)
+                 }else{
+                      this.loading=false;
                  }
             })
             },

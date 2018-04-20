@@ -6,7 +6,7 @@
     <Row>
         <Form  :label-width="80" inline style="margin-top:20px;">
                      <FormItem label="数据时间">
-                        <DatePicker type="daterange" v-model="HandleDataTime"   placeholder="Select date" style="width: 200px" ></DatePicker>
+                        <DatePicker type="daterange"   @on-change="Slectdata"  v-model="HandleDataTime"  format="yyyy-MM-dd"  placeholder="Select date" style="width: 200px"  :options="disabledDate"></DatePicker>
                      </FormItem>
                     <FormItem>
                         <Button type="primary" @click="SeachOplogData" >查询</Button>
@@ -23,10 +23,18 @@
 </template>
 <script>
 import {GetUserNameOplogData} from '@/assets/api/api'
+import{timeFormattershow}from'@/assets/js/common';
 import qs from 'qs';
 export default {
     data(){
       return{
+          staDate:"",
+          endDate:'',
+          disabledDate:{
+                disabledDate(time) {
+                     return time.getTime() > Date.now();
+                    }
+               },
           loading:false,
           totalnameber:null,
           OPerationData:[],
@@ -86,14 +94,19 @@ export default {
       }
     },
     methods:{
+
+      Slectdata(time){
+              this.staDate=time[0];
+              this.endDate=time[1]
+         },
         GetUserNameOplogData(){
           this.loading=true
           this.OPerationData=[]
           var params={
               pageIndex:this.pageIndex,
               pageSize:this.pageSize,
-              staDate:this.HandleDataTime[0],
-              endDate:this.HandleDataTime[1]
+              staDate:this.staDate,
+              endDate: this.endDate
           }
             GetUserNameOplogData(qs.stringify(params)).then(res=>{
                           if(res.State==1){
@@ -105,6 +118,7 @@ export default {
                           }
             })
         },
+       
         SeachOplogData(){
           this.GetUserNameOplogData()
         },
