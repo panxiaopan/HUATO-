@@ -412,7 +412,7 @@ export default {
                    }
             })   
         },
-        SeachHistory(){//查询
+        SeachHistory(){//查询LEIBIAO
             this.HistotyData()
         },
         HistotyData(index){
