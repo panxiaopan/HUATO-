@@ -112,3 +112,5 @@ export const LoggerRestoreUse  = (params) => {
     .post('/FunctionOperationManage/GetUserNameOplogData',params)
     .then(res => res.data)
 };
+//验证mac的接口
+

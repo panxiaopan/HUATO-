@@ -9,7 +9,7 @@
                         <Input  placeholder="仪器序列号" v-model="loggerSn"></Input>
                     </FormItem>
                      <FormItem label="数据时间">
-                        <DatePicker type="daterange" v-model="DataTime"  @on-change="Slectdata"  placeholder="Select date" style="width: 200px" :options="disabledDate"></DatePicker>
+                        <DatePicker type="daterange" v-model="DataTime"  @on-change="Slectdata"  placeholder="选择时间" style="width: 200px" :options="disabledDate"></DatePicker>
                      </FormItem>
                     <FormItem>
                         <Button type="primary" @click="locating">查询</Button>

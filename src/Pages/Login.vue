@@ -22,7 +22,7 @@
     </Row>
 </template>
 <script>
-import { UserLogin } from '@/assets/api/api';
+import { UserLogin,Getmac } from '@/assets/api/api';
  import {getIp} from '@/assets/js/getIp';
  import axios from 'axios';
  import qs from 'qs';
@@ -62,21 +62,34 @@ import { UserLogin } from '@/assets/api/api';
                         this.$Message.error('Fail!');
                     }
                 })
+            },
+        Getmacadress(){
+                $.ajax({
+                    type:'get',
+                    url:'http://127.0.0.1:8888/',
+                    dataType:'jsonp',
+                    success:function(res){
+                       console.log(res)
+                    }  
+                }) 
             }
+
+
+
         },
          mounted() {
       // 获取真实ip
             getIp((ip) => {
                 this.formInline.userIp = ip;
                 })
+        this.Getmacadress()
+                
       }
     }
 </script>
 <style>
     .loginpng{
-        
          background: url(../assets/img/login.jpg);
- 
     }
     .Fromstyle{
       margin: 0 auto;

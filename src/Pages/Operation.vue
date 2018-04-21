@@ -6,7 +6,7 @@
     <Row>
         <Form  :label-width="80" inline style="margin-top:20px;">
                      <FormItem label="数据时间">
-                        <DatePicker type="daterange"   @on-change="Slectdata"  v-model="HandleDataTime"  format="yyyy-MM-dd"  placeholder="Select date" style="width: 200px"  :options="disabledDate"></DatePicker>
+                        <DatePicker type="daterange"   @on-change="Slectdata"  v-model="HandleDataTime"  format="yyyy-MM-dd"  placeholder="选择时间" style="width: 200px"  :options="disabledDate"></DatePicker>
                      </FormItem>
                     <FormItem>
                         <Button type="primary" @click="SeachOplogData" >查询</Button>
